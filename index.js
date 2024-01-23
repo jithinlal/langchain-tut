@@ -4,15 +4,16 @@ import { HNSWLib } from "@langchain/community/vectorstores/hnswlib";
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import * as fs from 'fs';
 import * as dotenv from 'dotenv';
+import select, { Separator } from '@inquirer/select';
+import input from '@inquirer/input';
 
 dotenv.config();
 
 const txtFileName = 'radical_condor';
-const question = 'What is radical condor?';
 const txtPath = `./${txtFileName}.txt`;
 const VECTOR_STORE_PATH = `${txtFileName}.index`;
 
-export const run = async () => {
+export const run = async (question) => {
 	const model = new OpenAI({});
 
 	let vectorStore;
@@ -35,7 +36,37 @@ export const run = async () => {
 		query: question,
 	});
 
-	console.log({ res });
+	console.log("----------")
+	console.log(res.text);
+	console.log("----------")
 };
 
-run();
+
+
+(async function runProgram(){
+	while(true) {
+		const answer = await select({
+			message: 'select an option from below',
+			choices: [
+				{
+					name: 'ask a question',
+					value: 'question',
+					description: 'Ask a question regarding your document',
+				},
+				{
+					name: 'quit the cycle',
+					value: 'quit',
+					description: 'quit the program',
+				},
+				new Separator(),
+			],
+		});
+
+		if(answer === "question") {
+			const question = await input({ message: 'Ask your question' });
+			await run(question)
+		} else {
+			process.exit(0)
+		}
+	}
+})()
