@@ -1,7 +1,6 @@
-import { OpenAI } from 'langchain/llms';
+import { OpenAI ,OpenAIEmbeddings} from '@langchain/openai';
 import { RetrievalQAChain } from 'langchain/chains';
-import { HNSWLib } from 'langchain/vectorstores';
-import { OpenAIEmbeddings } from 'langchain/embeddings';
+import { HNSWLib } from "@langchain/community/vectorstores/hnswlib";
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import * as fs from 'fs';
 import * as dotenv from 'dotenv';
@@ -32,7 +31,7 @@ export const run = async () => {
 
 	const chain = RetrievalQAChain.fromLLM(model, vectorStore.asRetriever());
 
-	const res = await chain.call({
+	const res = await chain.invoke({
 		query: question,
 	});
 

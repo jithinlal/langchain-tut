@@ -17,7 +17,7 @@
     node-fetch "^2.6.7"
     web-streams-polyfill "^3.2.1"
 
-"@langchain/community@~0.0.17":
+"@langchain/community@^0.0.19", "@langchain/community@~0.0.17":
   version "0.0.19"
   resolved "https://registry.yarnpkg.com/@langchain/community/-/community-0.0.19.tgz#7feaa1f929428f092aab196f56daea86b1dd7791"
   integrity sha512-4+vpEINOvCZVqjcVVmctvA7ewMSopRbqJ/leDx7hvkeW1iC/aZJDqzWZPxiYNM0VxmB8qeTPFSMB0l4AKwO74w==
@@ -46,7 +46,7 @@
     zod "^3.22.4"
     zod-to-json-schema "^3.22.3"
 
-"@langchain/openai@~0.0.10", "@langchain/openai@~0.0.12":
+"@langchain/openai@^0.0.12", "@langchain/openai@~0.0.10", "@langchain/openai@~0.0.12":
   version "0.0.12"
   resolved "https://registry.yarnpkg.com/@langchain/openai/-/openai-0.0.12.tgz#4c6a4dda3ca96f103482f389299e018340aa2b75"
   integrity sha512-MR9x1xRXwJpdYlVx9Tga89q/MvxPrSTYyA5vy9tQ8dfQHNWnlgmI4gB/hDIsWUu1ooScagD4wW+aTnohTX+g+g==
